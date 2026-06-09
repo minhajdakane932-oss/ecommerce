@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title || 'Clothes Shop' %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="brand"><a href="/" style="color:inherit;text-decoration:none;">Clothes Shop</a></div>
+          <div>
+            <a href="/">Home</a>
+            <a href="/cart">Cart (<%= cartCount %>)</a>
+            <% if (!user) { %>
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+            <% } else { %>
+              <% if (user.isAdmin) { %><a href="/admin">Admin</a><% } %>
+              <a href="/logout">Logout</a>
+            <% } %>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <%- content %>
+    </main>
+
+    <footer class="footer">
+      <p>Simple ecommerce site for clothes. Powered by Node.js, Express, and MySQL.</p>
+    </footer>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
